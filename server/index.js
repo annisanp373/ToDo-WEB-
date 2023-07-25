@@ -68,20 +68,24 @@ app.get('/getUser/:id', (req, res) => {
 
 // Rute untuk pembaruan pengguna berdasarkan ID
 app.put("/update/:id", (req, res) => {
-    const id = req.params.id;
-    const { name, email, age } = req.body;
-  
-    UserModel.findByIdAndUpdate(
-      id,
-      { name, email, age },
-      { new: true }
-    )
-      .then((user) => res.json(user))
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json("An error occurred");
-      });
-  });
+  const id = req.params.id;
+  const { name, tanggal, toDo } = req.body;
+
+  UserModel.findByIdAndUpdate(
+    id,
+    {
+      name,
+      tanggal,
+      toDo: toDo, // Change empty string to null to avoid trimming
+    },
+    { new: true }
+  )
+    .then((user) => res.json(user))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json("An error occurred");
+    });
+});
   
 
 // Rute untuk penghapusan pengguna berdasarkan ID

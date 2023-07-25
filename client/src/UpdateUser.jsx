@@ -5,25 +5,28 @@ import { useParams, useNavigate } from "react-router-dom";
 function UpdateUser() {
   const { id } = useParams();
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
+  const [tanggal, setTanggal] = useState(""); // New state for tanggal
+  const [toDo, setToDo] = useState(""); // New state for To Do
   const navigate = useNavigate();
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3001/getUser/${id}`)
-      .then((result) => {
-        setName(result.data.name);
-        setEmail(result.data.email);
-        setAge(result.data.age);
-      })
-      .catch((err) => console.log(err));
-  }, [id]);
+  // ...
+useEffect(() => {
+  axios
+    .get(`http://localhost:3001/getUser/${id}`)
+    .then((result) => {
+      setName(result.data.name);
+      setTanggal(result.data.tanggal ? new Date(result.data.tanggal).toISOString().substr(0, 10) : ""); // Perubahan di sini
+      setToDo(result.data.toDo);
+    })
+    .catch((err) => console.log(err));
+}, [id]);
+// ...
+
 
   const handleUpdate = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:3001/update/${id}`, { name, email, age })
+      .put(`http://localhost:3001/update/${id}`, { name, tanggal, toDo }) // Send tanggal and toDo in the PUT request
       .then((result) => {
         console.log(result);
         navigate("/users");
@@ -32,7 +35,7 @@ function UpdateUser() {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
+    <div className="d-flex justify-content-center align-items-center bg-success text-dark vh-100">
       <div className="w-50 bg-white rounded p-3">
         <form onSubmit={handleUpdate}>
           <h2>Update User</h2>
@@ -47,23 +50,20 @@ function UpdateUser() {
             />
           </div>
           <div className="mb-2">
-            <label htmlFor="">Email</label>
+            <label htmlFor="">Tanggal</label> {/* Change label text to "Tanggal" */}
             <input
-              type="text"
-              placeholder="Enter Email"
+              type="date"
               className="form-control"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={tanggal}
+              onChange={(e) => setTanggal(e.target.value)} // Handle change for tanggal
             />
           </div>
           <div className="mb-2">
-            <label htmlFor="">Age</label>
-            <input
-              type="text"
-              placeholder="Enter Age"
+            <label htmlFor="">To Do</label> {/* Change label text to "To Do" */}
+            <textarea
               className="form-control"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
+              value={toDo}
+              onChange={(e) => setToDo(e.target.value)} // Handle change for toDo
             />
           </div>
           <button type="submit" className="btn btn-success">

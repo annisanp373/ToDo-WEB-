@@ -1,0 +1,28 @@
+
+  .btn {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .btn-success {
+    background-color: #50885d;
+    color: #fff;
+  }
+  
+  .btn-success:hover {
+    background-color: #50885d;
+  }
+  
+  /* Tampilan halaman CreateUser secara keseluruhan */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #994b85dd;
+  }
+  
+  

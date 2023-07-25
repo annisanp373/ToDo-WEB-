@@ -6,7 +6,7 @@ import Login from './Login';
 import Users from './Users';
 import CreateUser from './CreateUser';
 import UpdateUser from './UpdateUser';
-import Home from './Home';
+import Home from './home';
 
 function App() {
   return (

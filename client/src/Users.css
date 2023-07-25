@@ -1,0 +1,62 @@
+/* Tampilan tabel */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid rgb(135, 95, 95);
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #362020;
+  }
+  
+  tr:hover {
+    background-color: #f5f5f5;
+  }
+  
+  /* Tampilan tombol */
+  .btn {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .btn-success {
+    background-color: #4f7357;
+    color: #fff;
+  }
+  
+  .btn-success:hover {
+    background-color: #4f7357;
+  }
+  
+  .btn-danger {
+    background-color: #a13d7e;
+    color: #fff;
+  }
+  
+  .btn-danger:hover {
+    background-color: #a13d7e;
+  }
+  
+  .btn-success, .btn-danger {
+    margin-right: 10px;
+  }
+  
+  /* Tampilan halaman pengguna secara keseluruhan */
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  
+  
